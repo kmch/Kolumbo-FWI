@@ -1,3 +1,7 @@
+PhD-notebooks
+notebooks/binary
+notebooks/header
+
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]
