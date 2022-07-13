@@ -25,7 +25,7 @@ For more background and technical details please consult the PhD thesis of the m
 - Chrapkiewicz K. (2022), *High-resolution imaging beneath the Santorini volcano*, Imperial College London 
 ([open access](https://doi.org/10.25560/96427)).
 
-For a big-picture review of other seismic-imaging studies at other volcanoes worldwide, please take a look at:
+For a big-picture review of seismic-imaging studies at other volcanoes worldwide, please take a look at:
 
 - Paulatto M., Hooft E. E. Chrapkiewicz K., Heath B. A., Toomey, D. R. and Morgan, J. V. (in review), *Advances in seismic imaging of magma and crystal mush*, Frontiers in Earth Science 
 (preprint available [here](https://doi.org/10.31223/X5CS8S)).
