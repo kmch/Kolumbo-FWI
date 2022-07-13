@@ -18,9 +18,9 @@ Please cite the following article if using the repository or referring to the ma
 A companion paper supporting this study has been already published:
 
 - Schmid F., Petersen G., Hooft E. E., Paulatto M., Chrapkiewicz K., Hensch M., Dahm T. (2022), 
-*Heralds of future volcanism: Swarms of microseismicity beneath the submarine Kolumbo volcano indicate opening of near‐vertical fractures exploited by ascending melts*, Geochemistry, Geophysics, Geosystems, ([open access](https://doi.org/10.1029/2022GC010420)).
+*Heralds of future volcanism: Swarms of microseismicity beneath the submarine Kolumbo volcano indicate opening of near‐vertical fractures exploited by ascending melts*, Geochemistry, Geophysics, Geosystems ([open access](https://doi.org/10.1029/2022GC010420)).
 
 For more background and technical details you are welcome to take a look at the PhD thesis of the main author
 
-Chrapkiewicz K. (2022), *High-resolution imaging beneath the Santorini volcano*, Imperial College London, 
+- Chrapkiewicz K. (2022), *High-resolution imaging beneath the Santorini volcano*, Imperial College London 
 ([open access](https://doi.org/10.25560/96427)).
