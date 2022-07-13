@@ -10,5 +10,6 @@ A pre-print of the manuscript is already available at [EarthArXiv](https://doi.o
 
 ## Citing
 Please cite the following article if using these data or referring to our results:
-Chrapkiewicz K., Paulatto M., Heath B., Hooft E.E., Nomikou P., Papazachos C.B., Schmid F., Toomey D.R., Warner M., Morgan J.V.,
+
+- Chrapkiewicz K., Paulatto M., Heath B., Hooft E.E., Nomikou P., Papazachos C.B., Schmid F., Toomey D.R., Warner M., Morgan J.V.,
 (2022), *Magma chamber detected beneath an arc volcano with full-waveform inversion of active-source seismic data*, Geochemistry, Geophysics, Geosystems (preprint available: https://doi.org/10.31223/X5934R).
