@@ -1,0 +1,14 @@
+{
+	"folders": [
+		{
+			"path": "../computer-tricks/tricks"
+		},
+		{
+			"path": "../../0Kolumbo-FWI/fwipy"
+		},
+		{
+			"path": "../python-tricks/snippets"
+		}
+	],
+	"settings": {}
+}

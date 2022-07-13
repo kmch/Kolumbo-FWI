@@ -35,8 +35,14 @@ class PROTEUS(Experiment,PlotExp):
     self.all_not_read = True
     self._init_boxes()
     self._init_paths()
-    self._init_start_vp()
-    self._init_wavelet()
+    try:
+      self._init_start_vp()
+    except FileNotFoundError as err:
+      print(err)
+    try:
+      self._init_wavelet()
+    except FileNotFoundError as err:
+      print(err)      
   def read_all(self):
     self.read_bathy_topo()
     self.read_metadata()
