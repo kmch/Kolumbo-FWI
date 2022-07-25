@@ -584,6 +584,186 @@ def plot_out_data(p, it, sid, lid, freq, interleave,\
             f.plot_phase(freq, overwrite=overwrite, arrow=arrow,\
                 arrow_width=arrow_width, arrow_color=arrow_color, **kwargs)
 
+
+def plot_wiggles(Z, **kwargs):
+  """
+  Parameters
+  ----------
+  Returns
+  -------
+  
+  Notes
+  -----
+  It should be merged with Plot_Trace.
+  
+  Taking the spectrum should be separated from Plot_Trace 
+  or called from external.
+  
+  """
+  gap = kwargs.get('gap', 10) # GAP BETWEEN TRACE
+  t = np.arange(Z.shape[-1])
+  
+  for i, trace in enumerate(Z):
+    trace = trace[0]
+    trace += i * gap
+    zero_axis = np.ones(len(t)) * i * gap
+    plot_2_series(t, zero_axis, trace, orient='verti',
+                  c1='k', c2='w', c_line='k', lw=.1, **kwargs)
+    
+  plt.gca().invert_yaxis() # DISABLED SINCE IT IS FLIPPED BY ANOTHER FUNCTION
+def plot_2_series(x, y1, y2, **kwargs):
+  """
+  Plot 2 time-series with red/blue filling between them.
+  It can deal with both horizontal and vertical
+  orientations.
+  
+  Parameters
+  ----------
+
+  
+  Returns
+  -------
+  0
+  
+  Notes
+  -----
+  It assumes that first samples of both series
+  correspond to the same x.
+  
+  """
+  # READ ARGS
+  xlim = kwargs.get('xlim', None)
+  ylim = kwargs.get('ylim', None)
+  c1 = kwargs.get('c1', 'r')
+  c2 = kwargs.get('c2', 'b')
+  alpha = kwargs.get('alpha', 1)
+  lw = kwargs.get('lw', 1)
+  interpolate = kwargs.get('interpolate', True)
+  xlabel = kwargs.get('xlabel', 'X')
+  ylabel = kwargs.get('ylabel', 'Y')
+  l1 = kwargs.get('l1', None)
+  l2 = kwargs.get('l2', None)
+  orient = kwargs.get('orient', 'horiz')
+  c_line = kwargs.get('c_line', 'c2c1')
+  
+  if c_line == 'c2c1':
+    c_line1 = c2
+    c_line2 = c1
+  else:
+    c_line1 = c_line #'grey'
+    c_line2 = c_line #'grey'
+    
+  
+  # PREPARE LISTS
+  if (len(x) != len(y1)) or (len(x) != len(y2)):
+    raise TypeError('All x, y1, y2 arrays must have the same length.')
+  
+  y1 = np.array(y1) # otherwise 'dimensions are inconsistent'
+  y2 = np.array(y2) ##
+  
+  # PLOT
+  ax = plt.gca()  
+
+  if orient == 'horiz':
+    ax.plot(x, y1, color=c_line1, lw=lw, label=l1)
+    ax.plot(x, y2, color=c_line2, lw=lw, label=l2)    
+    ax.fill_between(x, y1, y2, where=y2 >= y1, facecolor=c1, interpolate=interpolate, alpha=alpha)
+    ax.fill_between(x, y1, y2, where=y2 <= y1, facecolor=c2, interpolate=interpolate, alpha=alpha)
+  elif orient == 'verti':
+    ax.plot(y1, x, color=c_line1, lw=lw, label=l1)
+    ax.plot(y2, x, color=c_line2, lw=lw, label=l2)    
+    ax.fill_betweenx(x, y1, y2, where=y2 >= y1, facecolor=c1, interpolate=interpolate, alpha=alpha)
+    ax.fill_betweenx(x, y1, y2, where=y2 <= y1, facecolor=c2, interpolate=interpolate, alpha=alpha)
+  else:
+    raise ValueError('Wrong orient: ' + orient)
+  
+  # FORMAT
+  #plt.xlim(xlim)
+  #plt.ylim(ylim)
+  #plt.xlabel(xlabel)
+  #plt.ylabel(ylabel)
+  #plt.grid()
+  
+  if l1 and l2:    
+    plt.legend(loc='upper right', frameon=False, prop={'size' : 15})
+def plot_2_series_new(x, y1, y2, **kwargs):
+  """
+  Plot 2 time-series with red/blue filling between them.
+  It can deal with both horizontal and vertical
+  orientations.
+  
+  Parameters
+  ----------
+
+  
+  Returns
+  -------
+  
+  Notes
+  -----
+  It assumes that first samples of both series
+  correspond to the same x.
+  
+  """
+  # READ ARGS
+  xlim = kwargs.get('xlim', None)
+  ylim = kwargs.get('ylim', None)
+  c1 = kwargs.get('c1', 'r')
+  c2 = kwargs.get('c2', 'b')
+  alpha = kwargs.get('alpha', 1)
+  lw = kwargs.get('lw', 1)
+  interpolate = kwargs.get('interpolate', True)
+  xlabel = kwargs.get('xlabel', 'X')
+  ylabel = kwargs.get('ylabel', 'Y')
+  l1 = kwargs.get('l1', None)
+  l2 = kwargs.get('l2', None)
+  orient = kwargs.get('orient', 'horiz')
+  c_line = kwargs.get('c_line', 'c2c1')
+  
+  if c_line == 'c2c1':
+    c_line1 = c2
+    c_line2 = c1
+  else:
+    c_line1 = c_line #'grey'
+    c_line2 = c_line #'grey'
+    
+  
+  # PREPARE LISTS
+  if (len(x) != len(y1)) or (len(x) != len(y2)):
+    raise TypeError('All x, y1, y2 arrays must have the same length.')
+  
+  y1 = np.array(y1) # otherwise 'dimensions are inconsistent'
+  y2 = np.array(y2) ##
+  
+  # PLOT
+  ax = plt.gca()  
+
+  if orient == 'horiz':
+    ax.plot(x, y1, color=c_line1, lw=lw, label=l1)
+    ax.plot(x, y2, color=c_line2, lw=lw, label=l2)    
+    ax.fill_between(x, y1, y2, where=y2 >= y1, facecolor=c1, interpolate=interpolate, alpha=alpha)
+    ax.fill_between(x, y1, y2, where=y2 <= y1, facecolor=c2, interpolate=interpolate, alpha=alpha)
+  elif orient == 'verti':
+    ax.plot(y1, x, color=c_line1, lw=lw, label=l1)
+    ax.plot(y2, x, color=c_line2, lw=lw, label=l2)    
+    ax.fill_betweenx(x, y1, y2, where=y2 >= y1, facecolor=c1, interpolate=interpolate, alpha=alpha)
+    ax.fill_betweenx(x, y1, y2, where=y2 <= y1, facecolor=c2, interpolate=interpolate, alpha=alpha)
+  else:
+    raise ValueError('Wrong orient: ' + orient)
+  
+  # FORMAT
+  #plt.xlim(xlim)
+  #plt.ylim(ylim)
+  #plt.xlabel(xlabel)
+  #plt.ylabel(ylabel)
+  #plt.grid()
+  
+  if l1 and l2:    
+    plt.legend(loc='upper right', frameon=False, prop={'size' : 15})
+
+
+
+
 # VARIA
 def add_spherical_anomaly(m, center=(100,235,50), radius=20, anom=-0.4, smooth=True):
     """

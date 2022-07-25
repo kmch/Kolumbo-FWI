@@ -27,7 +27,7 @@ import matplotlib.pyplot as plt
 # from fwipy.ioapi.generic import save_txt, read_txt, read_any
 # from fwipy.ioapi.fw3d import TtrFile, VtrFile, read_vtr, save_vtr
 from fwipy.ioapi.memmap import read_mmp, save_mmp
-# from fwipy.ioapi.segy import SgyFile
+from fwipy.ioapi.segy import SgyFile
 # from fwipy.ioapi.su import *
 
 

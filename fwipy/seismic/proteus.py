@@ -87,9 +87,13 @@ class PROTEUS(Experiment,PlotExp):
     Also sets a default - `self.svp`.
     """
     path = self.heavy_path['start_mods']
+    
     fname = 'vp_Heath2019_x-6e4_64e3_y-14e3_29e3_z-15e2_5e3_2481x861x131.mmp'
     fname = '%s/%s' % (path, fname)
-    vp = np.memmap(fname, dtype=np.float32, shape=(2481,861,131))
+    try:
+      vp = np.memmap(fname, dtype=np.float32, shape=(2481,861,131))
+    except:
+      return
     x1 = -6.0e4
     x2 = +6.4e4
     y1 = -1.4e4
