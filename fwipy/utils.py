@@ -322,6 +322,72 @@ def nb_scroller():
   return fig.canvas.mpl_connect('scroll_event', tracker.onscroll)
 
 # DATA QC AND PROCESSING
+def read_data(sgyfile, tracf, ep, ow=False, norm=None):
+    """Read shotline data into a 2D np.ndarray.
+
+    Args:
+        tracf (int): station ID (here, OBS ID)
+        ep (int): shotline ID
+    """
+    from fwipy.ndat.arrays import modify_array
+    a2d = sgyfile.read(win=dict(tracf=[tracf],ep=[ep]), overwrite=ow)[:,0,:]
+    a2d = modify_array(a2d, norm=norm)
+    assert isinstance(a2d, np.ndarray)
+    return a2d
+def read_head(sgyfile, tracf, ep, ow=False):
+    """Read shotline metadata into a pd.DataFrame.
+
+    Args:
+        tracf (int): station ID (here, OBS ID)
+        ep (int): shotline ID
+    """
+    h = sgyfile.read_header(overwrite=ow)
+    h = h.loc[(h.tracf==tracf) & (h.ep==ep)]
+    #calc_offset3d(h)
+    return h
+def reduced_time(offset, vel_red, ns, dt):
+    if abs(vel_red) > 1e-3: # numerical zero
+        t = np.arange(0, ns) * dt - offset / vel_red
+    else:
+        t = np.arange(0, ns) * dt    
+    return t
+def scale_axis_units(divide_by):
+    """Scale units of X/Y axis by dividing by a scalar.
+
+    Args:
+        divide_by (float): scalar factor.
+
+    Returns:
+        ticks: To be used as:
+        > ax.xaxis.set_major_formatter(ticks)
+        > ax.yaxis.set_major_formatter(ticks)
+    """
+    import matplotlib.ticker as ticker
+    return ticker.FuncFormatter(lambda x, pos: '{0:g}'.format(x/divide_by))
+def plot_data_wigg(sgyfile, tracf, ep, label, color, ow=False, norm=None, \
+        vel_red=0, amplify=1, lw=1, x_unit='km', **kwargs):
+    ax = kwargs.get('ax', plt.gca())
+    a = read_data(sgyfile, tracf, ep, ow, norm)
+    h = read_head(sgyfile, tracf, ep, ow)
+    dt = h.dt.unique()[0] / 1e6 # seconds
+    ns = h.ns.unique()[0]
+    xmin = kwargs.get('xmin', min(h.sx))
+    xmax = kwargs.get('xmax', max(h.sx))
+    tmin = kwargs.get('tmin', 0)
+    tmax = kwargs.get('tmax', ns*dt)    
+    for i, (x, offset) in enumerate(zip(h.sx, h.offset)): # should be 3d
+        if i > 0:
+            label = None
+        t = reduced_time(offset, vel_red, ns, dt)
+        A = x + a[i] * amplify # X coordinate serves as X axis, not trace id
+        ax.plot(A, t, color=color, lw=lw, label=label)
+    ax.set_xlim(xmin, xmax)
+    ax.set_ylim(tmin, tmax)
+    ax.set_xlabel('X (%s)' % x_unit)
+    ax.set_ylabel('Reduced time (s)')
+    if x_unit == 'km':
+        ax.xaxis.set_major_formatter(scale_axis_units(divide_by=1e3))
+    return plt.gca()
 def qc_datafile(datafile, ep, cmap1='Greys', cmap2='hot', \
     **kwargs):
     txlim = kwargs.get('txlim', None)
