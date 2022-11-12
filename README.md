@@ -1,7 +1,6 @@
 # :volcano: Kolumbo-FWI
-This repository contains material accompanying the manuscript *Magma chamber detected beneath an arc volcano with
-full-waveform inversion of active-source seismic data* by Chrapkiewicz et al. (*G-Cubed*, in review). 
-A pre-print of this manuscript is already available at [EarthArXiv](https://doi.org/10.31223/X5934R).
+This repository contains material accompanying the manuscript  *Magma chamber detected beneath an arc volcano with
+full-waveform inversion of active-source seismic data* by Chrapkiewicz et al. (DOI:10.1029/2022GC010475).
 
 
 ## Structure of the repository
