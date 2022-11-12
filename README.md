@@ -13,7 +13,7 @@ A pre-print of this manuscript is already available at [EarthArXiv](https://doi.
 Please cite the following article if using the repository or referring to the material presented in the manuscript:
 
 - Chrapkiewicz K., Paulatto M., Heath B. A., Hooft E. E., Nomikou P., Papazachos C. B., Schmid F., Toomey D. R., Warner M. and Morgan J. V.,
-(2022), *Magma chamber detected beneath an arc volcano with full-waveform inversion of active-source seismic data*, Geochemistry, Geophysics, Geosystems (preprint available [here](https://doi.org/10.31223/X5934R)).
+(2022), *Magma chamber detected beneath an arc volcano with full-waveform inversion of active-source seismic data*, Geochemistry, Geophysics, Geosystems ([open access](https://doi.org/10.1029/2022GC010475)).
 
 For analysis of microseismic data supporting this study, please refer to the companion paper:
 
@@ -27,5 +27,4 @@ For more background and technical details please consult the PhD thesis of the m
 
 For a big-picture review of seismic-imaging studies at other volcanoes worldwide, please take a look at:
 
-- Paulatto M., Hooft E. E. Chrapkiewicz K., Heath B. A., Toomey, D. R. and Morgan, J. V. (in review), *Advances in seismic imaging of magma and crystal mush*, Frontiers in Earth Science 
-(preprint available [here](https://doi.org/10.31223/X5CS8S)).
+- Paulatto M., Hooft E. E. Chrapkiewicz K., Heath B. A., Toomey, D. R. and Morgan, J. V. (in review), *Advances in seismic imaging of magma and crystal mush*, Frontiers in Earth Science. ([open access](https://doi.org/10.3389/feart.2022.970131)).
