@@ -345,6 +345,21 @@ def read_head(sgyfile, tracf, ep, ow=False):
     h = h.loc[(h.tracf==tracf) & (h.ep==ep)]
     #calc_offset3d(h)
     return h
+def read_geom(sgyfile, tracf, divide_by, ow=False):
+    h = sgyfile.read_header(overwrite=ow)
+    df = h.loc[h.tracf==tracf]
+    sx = df.sx / divide_by
+    sy = df.sy / divide_by
+    rx = df.gx.unique() / divide_by
+    ry = df.gy.unique() / divide_by
+    return sx, sy, rx, ry
+def read_geom_bounds(sgyfile, divide_by, padx=0, pady=0, ow=False):
+    h = sgyfile.read_header(overwrite=ow)
+    x1 = (min(min(h.sx), min(h.gx)) - padx) / divide_by
+    y1 = (min(min(h.sy), min(h.gy)) - pady) / divide_by
+    x2 = (max(max(h.sx), max(h.gx)) + padx) / divide_by
+    y2 = (max(max(h.sy), max(h.gy)) + pady) / divide_by
+    return x1, x2, y1, y2    
 def reduced_time(offset, vel_red, ns, dt):
     if abs(vel_red) > 1e-3: # numerical zero
         t = np.arange(0, ns) * dt - offset / vel_red
@@ -388,6 +403,15 @@ def plot_data_wigg(sgyfile, tracf, ep, label, color, ow=False, norm=None, \
     if x_unit == 'km':
         ax.xaxis.set_major_formatter(scale_axis_units(divide_by=1e3))
     return plt.gca()
+def plot_box_around_line(sgyfile, tracf, ep, divide_by, padx=0, pady=0, ow=False):
+    from fwipy.plot.misc import plot_square
+    h = read_head(sgyfile, tracf, ep, ow)
+    x1 = (min(min(h.sx), min(h.sx)) - padx) / divide_by
+    y1 = (min(min(h.sy), min(h.sy)) - pady) / divide_by
+    x2 = (max(max(h.sx), max(h.sx)) + padx) / divide_by
+    y2 = (max(max(h.sy), max(h.sy)) + pady) / divide_by
+    return plot_square(x1, x2, y1, y2)
+
 def qc_datafile(datafile, ep, cmap1='Greys', cmap2='hot', \
     **kwargs):
     txlim = kwargs.get('txlim', None)
