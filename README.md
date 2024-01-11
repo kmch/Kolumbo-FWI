@@ -9,7 +9,7 @@ full-waveform inversion of active-source seismic data* by Chrapkiewicz et al. (2
 - [notebooks](notebooks): contains Jupyter notebooks with the workflow of data analysis.
 
 ## Citing
-Please cite the following article if using the repository or referring to the material presented in the manuscript:
+If you use any part of this repository in your research, please cite the following paper:
 
 - Chrapkiewicz K., Paulatto M., Heath B. A., Hooft E. E., Nomikou P., Papazachos C. B., Schmid F., Toomey D. R., Warner M. and Morgan J. V.
 (2022), *Magma chamber detected beneath an arc volcano with full-waveform inversion of active-source seismic data*, Geochemistry, Geophysics, Geosystems, [doi:10.1029/2022GC010475](https://doi.org/10.1029/2022GC010475).
@@ -23,6 +23,6 @@ For more background, including all the technical details of data processing and 
 
 - Chrapkiewicz K. (2022), *High-resolution imaging beneath the Santorini volcano*, Imperial College London, [doi:10.25560/96427](https://doi.org/10.25560/96427).
 
-For a big picture and a discussion of the wavefront-healing phenomenon, you may want to read a comprehensive review of seismic-imaging studies of volcanoes worldwide:
+For a bigger picture and a discussion of the wavefront-healing phenomenon, you may want to read a comprehensive review of seismic-imaging studies of volcanoes worldwide:
 
 - Paulatto M., Hooft E. E. Chrapkiewicz K., Heath B. A., Toomey, D. R. and Morgan, J. V. *Advances in seismic imaging of magma and crystal mush*, Frontiers in Earth Science, [doi:10.3389/feart.2022.970131](https://doi.org/10.3389/feart.2022.970131).
